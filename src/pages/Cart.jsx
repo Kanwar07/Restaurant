@@ -2,13 +2,19 @@ import React, { useContext } from "react";
 import { alldata } from "../context/Context";
 import CartCard from "../components/CartCard";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function Cart() {
-  const { cartitems } = useContext(alldata);
+  const { cartitems, combinefunction } = useContext(alldata);
   return (
     <>
       {cartitems.length > 0 ? (
-        <div className="pb-16 pt-16">
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="pb-20 pt-20"
+        >
           <NavLink to="/menu">
             {" "}
             <div className="w-full flex justify-center my-6">
@@ -29,17 +35,25 @@ function Cart() {
           </div>
           <NavLink to="/tracking">
             {" "}
-            <div className="w-full flex justify-center my-2">
-              <button className="border border-1 border-[#000000] rounded-2xl py-2 px-6 bg-transparent hover:bg-[#D3D3D3]">
+            <div className="w-full flex justify-center my-6">
+              <button
+                className="border border-1 border-[#000000] rounded-2xl py-2 px-6 bg-transparent hover:bg-[#D3D3D3]"
+                onClick={combinefunction}
+              >
                 Confirm Order
               </button>
             </div>
           </NavLink>
-        </div>
+        </motion.div>
       ) : (
-        <div className="w-full h-screen flex justify-center items-center">
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="w-full h-screen flex justify-center items-center"
+        >
           Kindly add items to cart
-        </div>
+        </motion.div>
       )}
     </>
   );

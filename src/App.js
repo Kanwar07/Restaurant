@@ -13,6 +13,7 @@ import Restaurant from "./pages/Restaurant";
 import Profile from "./pages/Profile";
 import Tracking from "./pages/Tracking";
 import Detail from "./pages/Detail";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const router = createBrowserRouter(
@@ -29,6 +30,7 @@ function App() {
   );
   return (
     <Context>
+      <Toaster position="bottom-center" toastOptions={{ duration: 1500 }} />
       <RouterProvider router={router} />
     </Context>
   );

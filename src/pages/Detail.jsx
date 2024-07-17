@@ -6,7 +6,7 @@ function Detail() {
   const { detail } = useContext(alldata);
   return (
     <>
-      <div className="ml-2 mr-2 h-full mb-16 pt-16">
+      <div className="ml-2 mr-2 h-full pb-20 pt-20">
         <DetailCard detail={detail} />
       </div>
     </>

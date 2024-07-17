@@ -1,13 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function Profile() {
   return (
-    <NavLink to="/profile">
-      <div className="w-full h-screen flex justify-center items-center">
-        Coming soon
-      </div>
-    </NavLink>
+    <motion.div
+      initial={{ scale: 0.5, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="w-full h-screen flex justify-center items-center"
+    >
+      Coming soon
+    </motion.div>
   );
 }
 

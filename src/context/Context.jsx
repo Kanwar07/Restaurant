@@ -9,7 +9,9 @@ function Context({ children }) {
   const [restaurant, setrestaurant] = useState([]);
   const [menuitems, setmenuitems] = useState([]);
   const [cartitems, setcartitems] = useState([]);
+  const [orderdata, setorderdata] = useState([]);
   const [detail, setdetail] = useState({});
+  const [countdown, setcountdown] = useState(null);
 
   useEffect(() => {
     const fetchdata = () => {
@@ -23,6 +25,22 @@ function Context({ children }) {
     fetchdata();
   }, []);
 
+  useEffect(() => {
+    let timer;
+    if (countdown !== null && countdown > 0) {
+      timer = setInterval(() => {
+        setcountdown((prevCountdown) => prevCountdown - 1);
+      }, 1000);
+    } else if (countdown === 0) {
+      clearInterval(timer);
+    }
+    return () => clearInterval(timer);
+  }, [countdown]);
+
+  const startcountdown = (time) => {
+    setcountdown(time);
+  };
+
   const handledetail = (item) => {
     setdetail(item);
   };
@@ -30,7 +48,14 @@ function Context({ children }) {
   const addcart = (item, id) => {
     let itemExists = cartitems.some((cartItem) => cartItem.id === id);
     if (itemExists) {
-      toast.error("Item Already in Cart");
+      toast("Kindly increase the quantity in Cart", {
+        icon: "👏",
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
     } else {
       setcartitems([...cartitems, item]);
     }
@@ -51,6 +76,13 @@ function Context({ children }) {
       setcartitems(updateditem);
     }
   };
+
+  const combinefunction = () => {
+    startcountdown(30);
+    setorderdata(cartitems);
+    setcartitems([]);
+  };
+
   return (
     <alldata.Provider
       value={{
@@ -62,6 +94,10 @@ function Context({ children }) {
         addcart,
         removecart,
         updateQuantity,
+        countdown,
+        startcountdown,
+        combinefunction,
+        orderdata,
       }}
     >
       {children}

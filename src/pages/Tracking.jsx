@@ -2,18 +2,24 @@ import React, { useContext } from "react";
 import tick from "../assets/tick.svg";
 import { alldata } from "../context/Context";
 import TrackingCard from "../components/TrackingCard";
+import { motion } from "framer-motion";
 
 function Tracking() {
-  const { cartitems } = useContext(alldata);
+  const { orderdata, countdown } = useContext(alldata);
   return (
     <>
-      {cartitems.length > 0 ? (
-        <div className="pb-16 pt-16">
+      {orderdata.length > 0 ? (
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="pb-20 pt-20"
+        >
           <div className="flex justify-center w-full my-8">
             <img src={tick} alt="tick" />
           </div>
           <div className="grid grid-cols-4 gap-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
-            {cartitems.map((item) => {
+            {orderdata.map((item) => {
               const { id } = item;
               return (
                 <div key={id}>
@@ -22,14 +28,23 @@ function Tracking() {
               );
             })}
           </div>
-          <div className="my-8 w-full flex justify-center">
-            Order will arrive in 30 minutes
-          </div>
-        </div>
+          {countdown !== 0 ? (
+            <div className="my-8 w-full flex justify-center">
+              Order will arrive in {countdown} seconds
+            </div>
+          ) : (
+            <div className="my-8 w-full flex justify-center">Order arrived</div>
+          )}
+        </motion.div>
       ) : (
-        <div className="w-full h-screen flex justify-center items-center">
-          Kindly add items to track
-        </div>
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="w-full h-screen flex justify-center items-center"
+        >
+          Kindly confirm order to track
+        </motion.div>
       )}
     </>
   );
