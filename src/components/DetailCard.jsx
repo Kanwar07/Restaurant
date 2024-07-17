@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CardActions, CardContent, CardMedia } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { alldata } from "../context/Context";
 
 function DetailCard({ detail }) {
   const {
+    id,
     name,
     servings,
     cuisine,
@@ -13,6 +15,8 @@ function DetailCard({ detail }) {
     reviewCount,
     mealType,
   } = detail;
+
+  const { addcart } = useContext(alldata);
 
   return (
     <div className="border rounded-2xl">
@@ -46,12 +50,18 @@ function DetailCard({ detail }) {
           </div>
         </div>
       </CardContent>
-      <CardActions>
+      <CardActions className="flex flex-row justify-center">
         <NavLink to="/menu">
-          <button className="border border-2 border-[#000000] px-6 py-3 rounded-2xl">
+          <button className="border border-2 border-[#000000] px-4 py-2 rounded-2xl">
             Check out more items
           </button>
         </NavLink>
+        <button
+          onClick={() => addcart(detail, id)}
+          className="border border-2 border-[#000000] px-4 py-2 rounded-2xl"
+        >
+          Add to Cart
+        </button>
       </CardActions>
     </div>
   );

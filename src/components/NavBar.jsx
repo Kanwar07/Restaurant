@@ -10,27 +10,37 @@ function NavBar() {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1 }}
-      className="flex flex-row justify-evenly max-md:justify-between items-center z-50 fixed bg-[#ffffff] w-full py-3 px-12"
+      className="flex flex-row justify-evenly max-md:justify-between items-center z-50 fixed bg-[#ffffff] w-full py-2 px-12"
     >
       <NavLink to="/">
-        <img
-          src={logo}
-          alt="food"
-          className="cursor-pointer bg-transparent hover:bg-[#D3D3D3] p-2 rounded-full duration-200"
-        />
+        <div className="flex flex-col items-center">
+          <button className="bg-transparent hover:bg-[#D3D3D3] rounded-xl duration-200">
+            <img
+              src={logo}
+              alt="food"
+              className="cursor-pointer bg-transparent hover:bg-[#D3D3D3] p-2 rounded-full duration-200"
+            />
+          </button>
+          <div className="text-[12px] opacity-60 font-semibold">Home</div>
+        </div>
       </NavLink>
       <NavLink to="/">
-        <div className="cursor-pointer">
-          <span className="text-[#FD9827]">Food</span>{" "}
-          <span className="text-[#0000FF]">Mania</span>
+        <div className="cursor-pointer ">
+          <span className="text-[#FD9827] text-[20px]">Food</span>{" "}
+          <span className="text-[#0000FF] text-[20px]">Mania</span>
         </div>
       </NavLink>
       <NavLink to="/profile">
-        <img
-          src={profile}
-          alt="profile"
-          className="cursor-pointer bg-transparent hover:bg-[#D3D3D3] p-2 rounded-full duration-200"
-        />
+        <div className="flex flex-col items-center">
+          <button className="bg-transparent hover:bg-[#D3D3D3] rounded-xl duration-200">
+            <img
+              src={profile}
+              alt="profile"
+              className="cursor-pointer bg-transparent hover:bg-[#D3D3D3] p-2 rounded-full duration-200"
+            />
+          </button>
+          <div className="text-[12px] opacity-60 font-semibold">Profile</div>
+        </div>
       </NavLink>
     </motion.div>
   );

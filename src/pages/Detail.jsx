@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 
 function Detail() {
   const { detail } = useContext(alldata);
-  console.log(detail);
   return (
     <>
       <motion.div

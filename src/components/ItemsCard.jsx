@@ -44,7 +44,7 @@ function ItemsCard({ item }) {
                   onClick={() => addcart(item, id)}
                   className="border border-2 py-2 px-4 rounded-2xl brightness-100 hover:brightness-75 font-bold"
                 >
-                  Cart
+                  Add to Cart
                 </button>
               </CardActions>
             </div>

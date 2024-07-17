@@ -33,6 +33,15 @@ function Context({ children }) {
       }, 1000);
     } else if (countdown === 0) {
       clearInterval(timer);
+      toast("Order Delivered", {
+        icon: "👏",
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
+      setorderdata([]);
     }
     return () => clearInterval(timer);
   }, [countdown]);
@@ -58,6 +67,14 @@ function Context({ children }) {
       });
     } else {
       setcartitems([...cartitems, item]);
+      toast("Item added to cart", {
+        icon: "👏",
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 
@@ -78,7 +95,7 @@ function Context({ children }) {
   };
 
   const combinefunction = () => {
-    startcountdown(30);
+    startcountdown(10);
     setorderdata(cartitems);
     setcartitems([]);
   };
