@@ -1,9 +1,11 @@
 import React, { createContext, useEffect, useState } from "react";
 import mealdata from "../data/menuData.json";
+import restaurantdata from "../data/restaurantData.json";
 
-export const menudata = createContext();
+export const alldata = createContext();
 
 function Context({ children }) {
+  const [restaurant, setrestaurant] = useState([]);
   const [menuitems, setmenuitems] = useState([]);
   const [cartitems, setcartitems] = useState([]);
 
@@ -14,13 +16,16 @@ function Context({ children }) {
         quantity: 1,
       }));
       setmenuitems(dataWithQuantity);
+      setrestaurant(restaurantdata);
     };
     fetchdata();
   }, []);
   return (
-    <menudata.Provider value={{ menuitems, cartitems, setcartitems }}>
+    <alldata.Provider
+      value={{ menuitems, cartitems, setcartitems, restaurant }}
+    >
       {children}
-    </menudata.Provider>
+    </alldata.Provider>
   );
 }
 
