@@ -1,7 +1,6 @@
 import React from "react";
 import restaurant from "../assets/restaurant.png";
 import cart from "../assets/cart.png";
-import tracking from "../assets/tracking.png";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 
