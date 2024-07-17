@@ -23,11 +23,6 @@ function Footer() {
           <img src={cart} alt="order" />
         </button>
       </NavLink>
-      <NavLink to="/tracking">
-        <button className="bg-transparent hover:bg-[#D3D3D3] p-2 rounded-xl duration-200">
-          <img src={tracking} alt="order" />
-        </button>
-      </NavLink>
     </motion.div>
   );
 }
