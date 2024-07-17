@@ -8,25 +8,14 @@ function Detail() {
   console.log(detail);
   return (
     <>
-      {detail ? (
-        <motion.div
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 2 }}
-          className="ml-2 mr-2 h-full pb-20 pt-20"
-        >
-          <DetailCard detail={detail} />
-        </motion.div>
-      ) : (
-        <motion.div
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 2 }}
-          className="w-full h-screen flex justify-center items-center"
-        >
-          <div>Click on Detail on Menu Page</div>
-        </motion.div>
-      )}
+      <motion.div
+        initial={{ scale: 0.5, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 2 }}
+        className="ml-2 mr-2 h-full pb-20 pt-20"
+      >
+        <DetailCard detail={detail} />
+      </motion.div>
     </>
   );
 }
