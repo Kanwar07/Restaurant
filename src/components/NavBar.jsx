@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   return (
-    <div className="flex flex-row justify-evenly max-md:justify-between items-center fixed z-50 bg-[#ffffff] w-full py-3 px-12">
+    <div className="flex flex-row justify-evenly max-md:justify-between items-center z-50 fixed bg-[#ffffff] w-full py-3 px-12">
       <NavLink to="/">
         <img src={logo} alt="food" className="cursor-pointer" />
       </NavLink>

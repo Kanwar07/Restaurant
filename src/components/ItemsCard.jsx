@@ -1,14 +1,11 @@
 import React, { useContext } from "react";
 import { CardContent, CardActions, Rating } from "@mui/material";
 import { alldata } from "../context/Context";
+import { NavLink } from "react-router-dom";
 
 function ItemsCard({ item }) {
-  const { name, image, rating, reviewCount } = item;
-  const { cartitems, setcartitems } = useContext(alldata);
-
-  const handlecart = () => {
-    setcartitems([...cartitems, item]);
-  };
+  const { id, name, image, rating, reviewCount } = item;
+  const { handledetail, addcart } = useContext(alldata);
 
   return (
     <>
@@ -35,14 +32,19 @@ function ItemsCard({ item }) {
                 </div>
               </CardContent>
               <CardActions className="grow flex flex-row justify-between">
-                <button className="border border-1 py-2 px-4 rounded-2xl brightness-100 hover:brightness-75">
-                  Details
-                </button>
+                <NavLink to="/detail">
+                  <button
+                    onClick={() => handledetail(item)}
+                    className="border border-1 py-2 px-4 rounded-2xl brightness-100 hover:brightness-75"
+                  >
+                    Details
+                  </button>
+                </NavLink>
                 <button
-                  onClick={handlecart}
+                  onClick={() => addcart(item, id)}
                   className="border border-1 py-2 px-4 rounded-2xl brightness-100 hover:brightness-75"
                 >
-                  Card
+                  Cart
                 </button>
               </CardActions>
             </div>

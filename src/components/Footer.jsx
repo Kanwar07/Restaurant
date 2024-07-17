@@ -5,10 +5,6 @@ import tracking from "../assets/tracking.png";
 import { NavLink } from "react-router-dom";
 
 function Footer() {
-  const handleclick = () => {
-    console.log("hey");
-  };
-
   return (
     <div className="fixed z-50 bottom-0 bg-[#ffffff] w-screen py-3 px-12 flex flex-row justify-evenly max-md:justify-between">
       <NavLink to="/">

@@ -1,4 +1,4 @@
-import { CardActions, CardContent, Rating } from "@mui/material";
+import { CardActions, CardContent } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
 

@@ -1,33 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CardMedia, CardContent } from "@mui/material";
+import { alldata } from "../context/Context";
 
 function CartCard({ item }) {
-  const {
-    name,
-    servings,
-    cuisine,
-    tags,
-    image,
-    rating,
-    reviewCount,
-    mealType,
-    quantity,
-  } = item;
+  const { id, name, image, quantity } = item;
+  const { updateQuantity } = useContext(alldata);
   return (
     <>
-      <div className="border rounded-2xl ml-2 mr-2 h-[100%]">
+      <div className="flex flex-row justify-between items-center border rounded-2xl ml-2 mr-2 h-full">
+        <CardMedia
+          image={image}
+          alt="meal"
+          className="h-full w-full rounded-l-2xl"
+        />
         <CardContent>
-          <div>name: {name}</div>
+          <div>{name}</div>
         </CardContent>
-        <CardMedia component="img" image={image} alt="meal" />
-        <CardContent>
-          <div>servings: {servings}</div>
-          <div>cuisine: {cuisine}</div>
-          <div>tags: {tags}</div>
-          <div>rating: {rating}</div>
-          <div>reviewCount: {reviewCount}</div>
-          <div>mealType: {mealType}</div>
-          <div>Quantity: {quantity}</div>
+        <CardContent className="flex flex-row">
+          <button
+            className="pr-4"
+            onClick={() => updateQuantity(quantity - 1, id)}
+          >
+            -
+          </button>
+          <div>{quantity}</div>
+          <button
+            className="pl-4"
+            onClick={() => updateQuantity(quantity + 1, id)}
+          >
+            +
+          </button>
         </CardContent>
       </div>
     </>
